@@ -2,6 +2,7 @@
 #define LARLITE_HIDETRUTH_H
 
 #include "Analysis/ana_base.h"
+#include "anaPart.h"
 
 namespace larlite {
 	class hideTruth : public ana_base{

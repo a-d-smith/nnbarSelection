@@ -11,20 +11,13 @@ namespace larlite {
 	}
 	
 	bool hideTruth::analyze(storage_manager* storage) {
-		
-		auto ev_mct = storage->get_data<event_mctrack>("mcreco");
-		auto ev_mcs = storage->get_data<event_mcshower>("mcreco");
+		partList P(storage);
 
-		if (!ev_mct){
-			std::cerr << "MCTrack pointer is invalid" << std::endl;
-			exit(1);
+		for (anaPart &part : P.List()){
+			part.PrintAll(true);
 		}
 
-		if (!ev_mcs){
-			std::cerr << "MCShower pointer is invalid" << std::endl;
-			exit(1);
-		}
-
+		std::cout << "=====================================" << std::endl;
 		return true;
 	}
 

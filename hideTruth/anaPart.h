@@ -56,9 +56,9 @@ public:
 	void SetParent(anaPart *__Parent);
 
 	// Functions to print TVector3 objects nicely
-	string PrintStart(bool _fullInfo);
-	string PrintEnd(bool _fullInfo);
-	string PrintMomentum(bool _fullInfo);
+	std::string PrintStart(bool _fullInfo);
+	std::string PrintEnd(bool _fullInfo);
+	std::string PrintMomentum(bool _fullInfo);
 
 	// Function to print all information nicely
 	void   PrintAll(bool _fullInfo);
@@ -85,7 +85,7 @@ protected:
 };
 
 // Constructor for MCTracks
-anaPart::anaPart(const larlite::mctrack &_mct){
+inline anaPart::anaPart(const larlite::mctrack &_mct){
 	_ID.first            = _mct.TrackID();
 	_PDG.first           = _mct.PdgCode();
 	_Type.first          = 't';
@@ -118,7 +118,7 @@ anaPart::anaPart(const larlite::mctrack &_mct){
 }
 
 // Constructor for MCShowers
-anaPart::anaPart(const larlite::mcshower &_mcs){
+inline anaPart::anaPart(const larlite::mcshower &_mcs){
 	_ID.first            = _mcs.TrackID();
 	_PDG.first           = _mcs.PdgCode();
 	_Type.first          = 's';
@@ -152,7 +152,7 @@ anaPart::anaPart(const larlite::mcshower &_mcs){
 }
 
 // Getters
-unsigned int anaPart::ID(bool _fullInfo){
+inline unsigned int anaPart::ID(bool _fullInfo){
 	if (_fullInfo){
 		return (_ID.first);
 	}
@@ -162,7 +162,7 @@ unsigned int anaPart::ID(bool _fullInfo){
 }
 
 
-int anaPart::PDG(bool _fullInfo){
+inline int anaPart::PDG(bool _fullInfo){
 	if (_fullInfo){
 		return (_PDG.first);
 	}
@@ -172,7 +172,7 @@ int anaPart::PDG(bool _fullInfo){
 }
 
 
-char anaPart::Type(bool _fullInfo){
+inline char anaPart::Type(bool _fullInfo){
 	if (_fullInfo){
 		return (_Type.first);
 	}
@@ -182,7 +182,7 @@ char anaPart::Type(bool _fullInfo){
 }
 
 
-TVector3 anaPart::Start(bool _fullInfo){
+inline TVector3 anaPart::Start(bool _fullInfo){
 	if (_fullInfo){
 		return (_Start.first);
 	}
@@ -192,7 +192,7 @@ TVector3 anaPart::Start(bool _fullInfo){
 }
 
 
-TVector3 anaPart::End(bool _fullInfo){
+inline TVector3 anaPart::End(bool _fullInfo){
 	if (_fullInfo){
 		return (_End.first);
 	}
@@ -202,7 +202,7 @@ TVector3 anaPart::End(bool _fullInfo){
 }
 
 
-TVector3 anaPart::Momentum(bool _fullInfo){
+inline TVector3 anaPart::Momentum(bool _fullInfo){
 	if (_fullInfo){
 		return (_Momentum.first);
 	}
@@ -212,7 +212,7 @@ TVector3 anaPart::Momentum(bool _fullInfo){
 }
 
 
-double anaPart::Energy(bool _fullInfo){
+inline double anaPart::Energy(bool _fullInfo){
 	if (_fullInfo){
 		return (_Energy.first);
 	}
@@ -222,7 +222,7 @@ double anaPart::Energy(bool _fullInfo){
 }
 
 
-bool anaPart::Primary(bool _fullInfo){
+inline bool anaPart::Primary(bool _fullInfo){
 	if (_fullInfo){
 		return (_Primary.first);
 	}
@@ -232,7 +232,7 @@ bool anaPart::Primary(bool _fullInfo){
 }
 
 
-unsigned int anaPart::ParentID(bool _fullInfo){
+inline unsigned int anaPart::ParentID(bool _fullInfo){
 	if (_fullInfo){
 		return (_ParentID.first);
 	}
@@ -242,7 +242,7 @@ unsigned int anaPart::ParentID(bool _fullInfo){
 }
 
 
-int anaPart::ParentPDG(bool _fullInfo){
+inline int anaPart::ParentPDG(bool _fullInfo){
 	if (_fullInfo){
 		return (_ParentPDG.first);
 	}
@@ -252,7 +252,7 @@ int anaPart::ParentPDG(bool _fullInfo){
 }
 
 
-anaPart* anaPart::Parent(bool _fullInfo){
+inline anaPart* anaPart::Parent(bool _fullInfo){
 	if (_fullInfo){
 		return (_Parent.first);
 	}
@@ -263,49 +263,49 @@ anaPart* anaPart::Parent(bool _fullInfo){
 
 
 // Setters
-void anaPart::SetPDG(int __PDG){
+inline void anaPart::SetPDG(int __PDG){
 	_PDG.second = __PDG;
 }
 
-void anaPart::SetType(char __Type){
+inline void anaPart::SetType(char __Type){
 	_Type.second = __Type;
 }
 
-void anaPart::SetStart(TVector3 __Start){
+inline void anaPart::SetStart(TVector3 __Start){
 	_Start.second = __Start;
 }
 
-void anaPart::SetEnd(TVector3 __End){
+inline void anaPart::SetEnd(TVector3 __End){
 	_End.second = __End;
 }
 
-void anaPart::SetMomentum(TVector3 __Momentum){
+inline void anaPart::SetMomentum(TVector3 __Momentum){
 	_Momentum.second = __Momentum;
 }
 
-void anaPart::SetEnergy(double __Energy){
+inline void anaPart::SetEnergy(double __Energy){
 	_Energy.second = __Energy;
 }
 
-void anaPart::SetPrimary(bool __Primary){
+inline void anaPart::SetPrimary(bool __Primary){
 	_Primary.second = __Primary;
 }
 
-void anaPart::SetParentID(unsigned int __ParentID){
+inline void anaPart::SetParentID(unsigned int __ParentID){
 	_ParentID.second = __ParentID;
 }
 
-void anaPart::SetParentPDG(int __ParentPDG){
+inline void anaPart::SetParentPDG(int __ParentPDG){
 	_ParentPDG.second = __ParentPDG;
 }
 
-void anaPart::SetParent(anaPart *__Parent){
+inline void anaPart::SetParent(anaPart *__Parent){
 	_Parent.second = __Parent;
 }
 
 // Functions to Print TVector3 objects nicely
-string anaPart::PrintStart(bool _fullInfo){
-	stringstream ss;
+inline std::string anaPart::PrintStart(bool _fullInfo){
+	std::stringstream ss;
 	if (_fullInfo){
 		ss << "(" << _Start.first.X() << ", " << _Start.first.Y() << ", " <<  _Start.first.Z() << ")";
 	}
@@ -316,8 +316,8 @@ string anaPart::PrintStart(bool _fullInfo){
 }
 
 
-string anaPart::PrintEnd(bool _fullInfo){
-	stringstream ss;
+inline std::string anaPart::PrintEnd(bool _fullInfo){
+	std::stringstream ss;
 	if (_fullInfo){
 		ss << "(" << _End.first.X() << ", " << _End.first.Y() << ", " <<  _End.first.Z() << ")";
 	}
@@ -328,8 +328,8 @@ string anaPart::PrintEnd(bool _fullInfo){
 }
 
 
-string anaPart::PrintMomentum(bool _fullInfo){
-	stringstream ss;
+inline std::string anaPart::PrintMomentum(bool _fullInfo){
+	std::stringstream ss;
 	if (_fullInfo){
 		ss << "(" << _Momentum.first.X() << ", " << _Momentum.first.Y() << ", " <<  _Momentum.first.Z() << ")";
 	}
@@ -341,9 +341,9 @@ string anaPart::PrintMomentum(bool _fullInfo){
 
 
 // Function to print all information nicely
-void anaPart::PrintAll(bool _fullInfo){
+inline void anaPart::PrintAll(bool _fullInfo){
 	if (_fullInfo){
-		std::cout << "Particle " << _ID.first << " (full info) ----------" << std::endl;
+		std::cout << "Particle " << _ID.first << " (full info) -------------------------" << std::endl;
 		std::cout << "  PDG       : " << _PDG.first;
 		switch (_Type.first){
 			case 's':
@@ -361,7 +361,7 @@ void anaPart::PrintAll(bool _fullInfo){
 		std::cout << "  Start     : " << this->PrintStart(_fullInfo) << std::endl;
 		std::cout << "  End       : " << this->PrintEnd(_fullInfo) << std::endl;
 		std::cout << "  Momentum  : " << this->PrintMomentum(_fullInfo) << std::endl;
-		std::cout << "  Energy    : " << _PDG.first << std::endl;
+		std::cout << "  Energy    : " << _Energy.first << std::endl;
 		if (_Primary.first){
 			std::cout << "  Primary   : Yes" << std::endl;
 		}
@@ -372,7 +372,7 @@ void anaPart::PrintAll(bool _fullInfo){
 		std::cout << "  ParentPDG : " << _ParentPDG.first << std::endl;
 	}
 	else{
-		std::cout << "Particle " << _ID.second << " (restricted info) ----" << std::endl;
+		std::cout << "Particle " << _ID.second << " (restricted info) -------------------" << std::endl;
 		std::cout << "  PDG       : " << _PDG.second;
 		switch (_Type.second){
 			case 's':
@@ -390,7 +390,7 @@ void anaPart::PrintAll(bool _fullInfo){
 		std::cout << "  Start     : " << this->PrintStart(_fullInfo) << std::endl;
 		std::cout << "  End       : " << this->PrintEnd(_fullInfo) << std::endl;
 		std::cout << "  Momentum  : " << this->PrintMomentum(_fullInfo) << std::endl;
-		std::cout << "  Energy    : " << _PDG.second << std::endl;
+		std::cout << "  Energy    : " << _Energy.second << std::endl;
 		if (_Primary.second){
 			std::cout << "  Primary   : Yes" << std::endl;
 		}
@@ -430,7 +430,7 @@ protected:
 	std::vector<anaPart> _partList;
 };
 
-partList::partList(larlite::storage_manager *_storage){
+inline partList::partList(larlite::storage_manager *_storage){
 	auto ev_mct = _storage->get_data<larlite::event_mctrack>("mcreco");
 	auto ev_mcs = _storage->get_data<larlite::event_mcshower>("mcreco");
 
@@ -463,7 +463,7 @@ partList::partList(larlite::storage_manager *_storage){
 	}
 }
 
-bool partList::ParticleExists(unsigned int __ID){
+inline bool partList::ParticleExists(unsigned int __ID){
 	for (anaPart &part : _partList){
 		if (part.ID(true) == __ID){
 			return true;
@@ -472,7 +472,7 @@ bool partList::ParticleExists(unsigned int __ID){
 	return false;
 }
 
-anaPart partList::GetParticle(unsigned int __ID){
+inline anaPart partList::GetParticle(unsigned int __ID){
 	if (this->ParticleExists(__ID)){
 		for (anaPart &part : _partList){
 			if (part.ID(true) == __ID){
@@ -486,7 +486,7 @@ anaPart partList::GetParticle(unsigned int __ID){
 	return part;	
 }
 
-std::vector<anaPart> partList::List(){
+inline std::vector<anaPart> partList::List(){
 	return _partList;
 }
 
