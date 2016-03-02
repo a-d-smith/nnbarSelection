@@ -463,6 +463,26 @@ inline partList::partList(larlite::storage_manager *_storage){
 	}
 }
 
+inline void partList::AddParticle(anaPart __part){
+	// Find the maximum particle ID 
+	unsigned int maxID = 0;
+
+	for (anaPart &part : _partList){
+		if (part.ID(true) > maxID){
+			maxID = part.ID(true);
+		}
+		if (ParticleExists(part.ParentID(true))){
+			if (part.Parent(true)->ID(true) > maxID){
+				maxID = part.Parent(true)->ID(true);
+			}
+		}
+	}
+	__part._ID.first  = maxID + 1;
+	__part._ID.second = maxID + 1;
+
+	_partList.push_back(__part);
+}
+
 inline bool partList::ParticleExists(unsigned int __ID){
 	for (anaPart &part : _partList){
 		if (part.ID(true) == __ID){
