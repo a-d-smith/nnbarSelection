@@ -300,7 +300,9 @@ inline void anaPart::SetParentPDG(int __ParentPDG){
 }
 
 inline void anaPart::SetParent(anaPart *__Parent){
-	_Parent.second = __Parent;
+	_Parent.second    = __Parent;
+	_ParentID.second  = __Parent->ID(false);
+	_ParentPDG.second = __Parent->PDG(false);
 }
 
 // Functions to Print TVector3 objects nicely
@@ -415,7 +417,7 @@ public:
 	~partList(){};
 
 	// Function to add a particle to the list (and assign it an ID)
-	void AddParticle(anaPart _part);
+	unsigned int AddParticle(anaPart _part);
 
 	// Function to see if a particle exists (by ID)
 	bool ParticleExists(unsigned int __ID);
@@ -442,7 +444,7 @@ inline partList::partList(larlite::storage_manager *_storage){
 		std::cerr << "Error: Invalid MCShower pointer" << std::endl;
 		exit(1);
 	}
-	
+
 	// Load in the tracks and showers as anaPart objects
 	for (auto const &mct : *ev_mct){
 		anaPart thisPart(mct);
@@ -463,7 +465,7 @@ inline partList::partList(larlite::storage_manager *_storage){
 	}
 }
 
-inline void partList::AddParticle(anaPart __part){
+inline unsigned int partList::AddParticle(anaPart __part){
 	// Find the maximum particle ID 
 	unsigned int maxID = 0;
 
@@ -481,6 +483,8 @@ inline void partList::AddParticle(anaPart __part){
 	__part._ID.second = maxID + 1;
 
 	_partList.push_back(__part);
+
+	return (maxID + 1);
 }
 
 inline bool partList::ParticleExists(unsigned int __ID){
